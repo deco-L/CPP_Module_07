@@ -17,6 +17,7 @@ int main(int, char**)
     {
         Array<int> tmp = numbers;
         Array<int> test(tmp);
+        std::cout << "--------------" << std::endl;
     }
 
     for (int i = 0; i < MAX_VAL; i++)
