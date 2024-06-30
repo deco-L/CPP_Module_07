@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/06/29 17:56:08 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/06/30 13:26:42 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ template <typename T>
 class Array
 {
 private:
-  T*            _array;
-  int  _size;
+  T*  _array;
+  unsigned int _size;
 
 public:
   Array( void );
   Array( const unsigned int& length );
-  Array( const Array<T>* obj );
+  Array( const Array& obj );
   ~Array();
 
   class outOfBoundsIndex : public std::exception
@@ -34,11 +34,11 @@ public:
     virtual const char* what( void ) const throw();
   };
 
-  int& getSize( void );
-  T             getElement( unsigned int& index);
-  T*            newArray( void );
+  const unsigned int& getSize( void ) const;
+  T             getElement( unsigned int& index) const;
+  T*            newArray( void ) const;
 
-  Array&  operator=( const Array<T>& obj);
+  Array&  operator=( const Array& obj);
   T&      operator[](int index);
 };
 

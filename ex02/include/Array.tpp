@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/06/29 18:01:18 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/06/30 13:38:20 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,56 +19,54 @@ Array<T>::Array(void) : _size(0)
 }
 
 template <typename T>
-Array<T>::Array( const unsigned int& length ) : _size(length)
+Array<T>::Array(const unsigned int& length ) : _size(length)
 {
   this->_array = new T[this->_size];
 }
 
 template <typename T>
-Array<T>::Array( const Array<T>* obj )
+Array<T>::Array(const Array& obj)
 {
-  this = obj;
+  *this = obj;
 }
 
 template <typename T>
 Array<T>::~Array()
 {
-  std::cout << "aaaa" << std::endl;
   delete[] this->_array;
-  std::cout << "aaaa" << std::endl;
 }
 
 template <typename T>
 const char* Array<T>::outOfBoundsIndex::what(void) const throw()
 {
-  return ("\e[1;38;5;182mError: out of bounds index");
+  return ("\e[1;38;5;182mError: out of bounds index\e[0m");
 }
 
 template <typename T>
-int& Array<T>::getSize()
+const unsigned int& Array<T>::getSize() const
 {
   return (this->_size);
 }
 
 template <typename T>
-T Array<T>::getElement(unsigned int& index)
+T Array<T>::getElement(unsigned int& index) const
 {
-  return (this->_array(index));
+  return (this->_array[index]);
 }
 
 template <typename T>
-T*  Array<T>::newArray()
+T*  Array<T>::newArray() const
 {
   T*  array;
 
   array = new T[this->getSize()];
   for (unsigned int index; index < this->getSize(); index++)
-    array[index] = this->getElement();
+    array[index] = this->getElement(index);
   return (array);
 }
 
 template <typename T>
-Array<T>& Array<T>::operator=(const Array<T>& obj)
+Array<T>& Array<T>::operator=(const Array& obj)
 {
   if (&obj != this)
   {
@@ -83,7 +81,7 @@ Array<T>& Array<T>::operator=(const Array<T>& obj)
 template <typename T>
 T&  Array<T>::operator[](int index)
 {
-  if (this->getSize() < index || index < 0)
+  if (static_cast<int>(this->getSize()) <= index || index < 0)
     throw Array<T>::outOfBoundsIndex();
   return (this->_array[index]);
 }
