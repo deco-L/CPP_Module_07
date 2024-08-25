@@ -6,9 +6,11 @@
 #    By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#              #
-#    Updated: 2024/06/29 17:38:24 by csakamot         ###   ########.fr        #
+#    Updated: 2024/08/25 14:31:22 by csakamot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+SHELL		= bash
 
 ##----Executable File Name-----##
 NAME		= array
