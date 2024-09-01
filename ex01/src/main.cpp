@@ -6,7 +6,7 @@
 /*   By: csakamot <csakamot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 14:21:20 by csakamot          #+#    #+#             */
-/*   Updated: 2024/06/28 13:52:05 by csakamot         ###   ########.fr       */
+/*   Updated: 2024/08/25 15:18:26 by csakamot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,27 @@ static void draw_terminal_line() {
 	return ;
 }
 
-void intToString(const std::string& str)
+static void printString(const std::string& str)
 {
   std::cout << str << " ";
 }
 
+static void  printInt(const int nbr)
+{
+  std::cout << nbr << " ";
+}
+
 int main() {
   draw_terminal_line();
-  std::string array[] = {"apple", "banana", "cherry"};
-  std::size_t length = sizeof(array) / sizeof(array[0]);
+  std::string stringArray[] = {"apple", "banana", "cherry"};
+  int         intArray[] = {42, 84, 126};
+  std::size_t slength = sizeof(stringArray) / sizeof(std::string);
+  std::size_t ilength = sizeof(intArray) / sizeof(int);
 
   std::cout << "String array: ";
-  iter(array, length, intToString);
+  iter(stringArray, slength, printString);
+  std::cout << std::endl << "Int array: ";
+  iter(intArray, ilength, printInt);
   std::cout << std::endl;
   draw_terminal_line();
   return (EXIT_SUCCESS);

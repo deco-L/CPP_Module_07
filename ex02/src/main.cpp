@@ -15,8 +15,26 @@ int main(int, char**)
     }
     //SCOPE
     {
+        Array<int> blank;
         Array<int> tmp = numbers;
         Array<int> test(tmp);
+        for (int i = 0; i < MAX_VAL; i++)
+        {
+            if (tmp[i] != test[i])
+            {
+                std::cerr << "didn't save the same value!!" << std::endl;
+            }
+        }
+        test[MAX_VAL - 1] = 0;
+        if (tmp[MAX_VAL - 1] == 0)
+            test[MAX_VAL - 1] = 1;
+        for (int i = 0; i < MAX_VAL; i++)
+        {
+            if (tmp[i] != test[i])
+            {
+                std::cerr << "didn't save the same value!!" << std::endl;
+            }
+        }
     }
 
     for (int i = 0; i < MAX_VAL; i++)
