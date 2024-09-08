@@ -25,7 +25,7 @@ Array<T>::Array(const unsigned int& length ) : _size(length)
 }
 
 template <typename T>
-Array<T>::Array(const Array& obj)
+Array<T>::Array(const Array& obj) : _array(NULL), _size(0)
 {
   *this = obj;
 }
